@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Bubu 💕</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Comic Sans MS', cursive;
+}
+
+body{
+  background:#ffd6e8;
+  height:100vh;
+  overflow:hidden;
+}
+
+/* Floating Hearts */
+.heart{
+  position:absolute;
+  color:#ff6fa5;
+  font-size:20px;
+  animation: float 6s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(100vh); opacity:0}
+  50%{opacity:1}
+  100%{transform:translateY(-10vh); opacity:0}
+}
+
+/* Envelope */
+#envelope{
+  width:260px;
+  height:180px;
+  background:#ffb6d5;
+  margin:auto;
+  margin-top:25vh;
+  position:relative;
+  cursor:pointer;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+#flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:50%;
+  background:#ff9fc9;
+  clip-path:polygon(0 0, 100% 0, 50% 100%);
+  transition:0.6s;
+}
+#envelope.open #flap{
+  transform:rotateX(180deg);
+}
+
+/* Password Screen */
+#passwordBox{
+  display:none;
+  text-align:center;
+  margin-top:20px;
+}
+input{
+  padding:10px;
+  border:none;
+  border-radius:20px;
+}
+button{
+  padding:8px 15px;
+  border:none;
+  border-radius:20px;
+  background:#ff6fa5;
+  color:white;
+  cursor:pointer;
+}
+
+/* Main Content */
+#content{
+  display:none;
+  text-align:center;
+  margin-top:40px;
+}
+
+.star{
+  font-size:40px;
+  cursor:pointer;
+}
+
+.heartBtn{
+  position:fixed;
+  right:20px;
+  top:40%;
+  font-size:40px;
+  cursor:pointer;
+}
+
+/* Popup Message */
+#popup{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  width:250px;
+  margin:20px auto;
+  display:none;
+}
+
+/* Aesthetic Paper */
+#letter{
+  display:none;
+  background:#fffaf0;
+  padding:20px;
+  border-radius:15px;
+  width:80%;
+  max-width:350px;
+  margin:20px auto;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+  background-image:linear-gradient(#fffaf0 95%, #f5d7e3 100%);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio autoplay loop>
+  <!-- Replace music.mp3 with any soft music file -->
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Envelope -->
+<div id="envelope" onclick="openEnvelope()">
+  <div id="flap"></div>
+</div>
+
+<!-- Password -->
+<div id="passwordBox">
+  <p>Enter Password 💗</p>
+  <input id="pass" type="password">
+  <br><br>
+  <button onclick="checkPass()">Unlock 💌</button>
+</div>
+
+<!-- Main Content -->
+<div id="content">
+  <p>Click the star ⭐</p>
+  <div class="star" onclick="showMessage()">⭐</div>
+
+  <div id="popup"></div>
+</div>
+
+<!-- Heart Button -->
+<div class="heartBtn" onclick="openLetter()">💖</div>
+
+<!-- Letter -->
+<div id="letter">
+  <p>
+  Hi meraaa pyaara bubu 💕<br><br>
+  tujhe pta h na mai terkoooo dherr sara pyaar krtii and ye pyaar bdhta jaara kam n horaa maybe isiliye ki tuu kitna accha h 💗<br><br>
+  thank you bubu mere sath rehne k liye I'm so happy ki tu mera h and dekh lena kisi ko cheen ne nhi dungi cause tu mera h and mera hi rhega 💞<br><br>
+  Sorry gussa dila deti but I love you soo muchhhhh maaf kr diya kr if kuch kr deti 🥺<br><br>
+  Cause tere bina n reh sakti 💖
+  </p>
+</div>
+
+<script>
+/* Floating hearts */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.innerHTML="💗";
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=Math.random()*20+15+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},500);
+
+/* Envelope */
+function openEnvelope(){
+  document.getElementById("envelope").classList.add("open");
+  document.getElementById("passwordBox").style.display="block";
+}
+
+/* Password */
+function checkPass(){
+  if(document.getElementById("pass").value==="bubuloveyou"){
+    document.getElementById("passwordBox").style.display="none";
+    document.getElementById("content").style.display="block";
+  }else{
+    alert("Wrong password 🥺");
+  }
+}
+
+/* Messages */
+const msgs=[
+"i love you so muchh 💕",
+"mwahhh 😘",
+"tu sabse pyaara 💗",
+"meraa pyaara babie 🥺",
+"mera bachaa mwahhh 💞",
+"hmesa sath rehna 🤍",
+"thankyouu bubu mujhe jhelne k liye 💖",
+"sorry preshan krne k liye 🥺",
+"I hope hum dono hmesa sath rhee 💫",
+"lovee youuuu so much 💕"
+];
+let i=0;
+
+function showMessage(){
+  const p=document.getElementById("popup");
+  p.innerText=msgs[i];
+  p.style.display="block";
+  i=(i+1)%msgs.length;
+}
+
+/* Letter */
+function openLetter(){
+  document.getElementById("letter").style.display="block";
+}
+</script>
+
+</body>
+  </html>
